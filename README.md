@@ -23,7 +23,7 @@ And if not you can to contact me.  And then we work out the way we add support f
 - make changes to the core of the app
 - implement the protocol natively in the app
 
-##### Table of Contents  
+### Table of Contents  
    * [M.R.Remote / Mining Rig Remote / Mister Remote](#mrremote--mining-rig-remote--mister-remote)
      * [What is M.R.Remote](#what-is-mrremote)
      * [Installing a new plugin:](#installing-a-new-plugin)
