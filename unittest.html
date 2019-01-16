@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unit tests</title>
+</head>
+<body>
+
+<style>
+srcex { font-family: monospace; font-size: 16px; font-style: italic; font-variant: normal; font-weight: bold; line-height: 8px; }
+src   { font-family: monospace; font-size: 16px; font-style: normal; font-variant: normal; font-weight: bold; line-height: 8px; }
+</style>
+<script type="text/javascript" src="unittest.js"> </script>
+<script type="text/javascript" src="srbminer-custom-fields.js"> </script>
+<script type="text/javascript"> 
+
+var context = null
+
+function browserCreateContext(host, port, options) {
+	context = {
+		address : { 
+			host: host,
+			port: port
+    	},
+		currentStatusCallback : function(response, error) {
+			/// Right now the developer should verify himself what is in here
+			console.log("Current status callback:")
+			console.log("Response: ")
+			console.log(response)
+			console.log("Error: " + error)
+			if (response) {
+				errors = {}
+				response.expect("version", "").toBeString()
+				response.expect("runningTime", "").toBeNumber()
+				response.expect("totalHashrate", "").toBeNumber()
+				response.expect("totalShares", "").toBeNumber()
+				response.expectArray("videoCards", null, function(v, path) {
+					v.expect("hashRate", path).toBeNumber()
+					v.expect("temperature", path).toBeNumber()
+					v.expect("fanSpeed", path).toBeNumber()
+				})
+				console.log("Unit tests errors: ")
+				console.log(errors)
+			}
+		},
+		onOffCallback : function(error) {
+			/// Right now the developer should verify himself what is in here
+			console.log("OnOff callback:")
+			console.log("Error: " + error)
+		}
+	}
+	initContext(context, options)
+}
+
+function browserGetCurrentStatus() {
+	getCurrentStatus(context)
+}
+
+function browserTurnOnOffGpu() {
+	turnOnOffGpu(context)
+}
+</script>
+
+<h2>[RClaymore] protocol debugger</h2>
+Please open "Inspect" in your browser. </br></br>
+All the tests are performed in "Console" tab. </br>
+<h2>Available commands:</h2>
+<srcex>performUnitTests()</srcex></br>
+Performs unit tests for compatibility with [RClaymore] </br> </br>
+
+
+<srcex>browserCreateContext(&lt;address&gt;, &lt;port&gt;, &lt;custom options&gt;)</srcex></br>
+Creates context from which further tests are performed.</br>
+example:</br>
+<src>browserCreateContext("192.168.0.127", 3333, { customKey : "CustomValue", customBookKey : true })</src></br></br>
+
+<srcex>browserGetCurrentStatus()</srcex></br>
+Retrieves current status from target miner, parses and prints output to console.</br></br>
+
+<srcex>browserTurnOnOffGpu()</srcex></br>
+Calls turn on or off gpu from the miner</br></br>
+
+<h2>Note:</h2>
+To perform in-browser miner API CORS are meant to be enabled. The instruction could be found <a href="https://www.thepolyglotdeveloper.com/2014/08/bypass-cors-errors-testing-apis-locally/">here.</a> Please do this with caution and don't keep this option available for all web sites. </br>
+
+</body>
+</html>
