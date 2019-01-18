@@ -7,16 +7,16 @@
 
 ### What is M.R.Remote
 
-M.R.Remote is an iOS application which allows to monitor and control mining software, asics and mining clouds. Our app tends to cover as many protocols as possible with the support of the community. Right now there're implemented following protocols:
+M.R.Remote is an iOS application which allows to monitor and control mining software, asics and mining clouds, or we use "endpoint" as a generalization term.
+
+Our app tends to cover as many endpoint protocols as possible with the support of the community. Right now there're implemented following protocols:
 
 - Claymore Ethereum
 - Claymore XMR
 - XMR Stak
 - SRB Miner 
 
-We tend to cover everything that is the most popular and common. There're so many different software, hardware and clouds, so we need to determine what to implement first depend on your feedback. And if you have some developer skills, you're able to implement it yourself by writing a simple JavaScript parser!
-
-Here we use term "endpoint" for mining software, asics or mining clouds with remote interface.
+We tend to cover every endpoint protocol that is the most popular and common. There're so many different software, hardware and clouds, so we need to determine what to implement first depend on your feedback. And if you have some developer skills, you're able to implement it yourself by writing a simple JavaScript parser! 
 
 Right now only endpoints which work by HTTP/HTTPs are supported. To do this you need to create a JavaScript like in the example and read the description below. 
 
@@ -26,6 +26,8 @@ And if your endpoint protocol is different than HTTP/HTTPs, we can work out the 
 
 - make changes to the core of the app
 - implement the protocol natively in the app
+
+And technically this application can be used in other areas, which could be useful for monitoring and controlling mining: smart switches, temperature sensors, voltage sensors, etc...
 
 ### Table of Contents  
    * [M.R.Remote / Mining Rig Remote / Mister Remote](#mrremote--mining-rig-remote--mister-remote)
