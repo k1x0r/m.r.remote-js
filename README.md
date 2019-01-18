@@ -7,18 +7,22 @@
 
 ### What is M.R.Remote
 
-M.R.Remote is an iOS application which allows to monitor and control mining software/hardware and even work potentially with mining clouds. The app has no limit of supporting different programs/hardware. Our app tends to cover as many protocols as possible with the support of the community. Right now there're implemented following protocols:
+M.R.Remote is an iOS application which allows to monitor and control mining software, asics and mining clouds. Our app tends to cover as many protocols as possible with the support of the community. Right now there're implemented following protocols:
 
 - Claymore Ethereum
 - Claymore XMR
 - XMR Stak
 - SRB Miner 
 
-If your protocol isn't listed here, custom support of mining protocol can be implemented. It's possible to implement the support of mining software has the support of remote control through HTTP. To do this you need to create a JavaScript like in the example and read the description below. 
+We tend to cover everything that is the most popular and common. There're so many different software, hardware and clouds, so we need to determine what to implement first depend on your feedback. And if you have some developer skills, you're able to implement it yourself by writing a simple JavaScript parser!
+
+Here we use term "endpoint" for mining software, asics or mining clouds with remote interface.
+
+Right now only endpoints which work by HTTP/HTTPs are supported. To do this you need to create a JavaScript like in the example and read the description below. 
 
 And a single JS file should be in the end. If the project has become very complicated it's recommended to use NodeJS 'bundler' to compile it to one file.
 
-And if not you can to contact me.  And then we work out the way we add support for your mining software/hardware.
+And if your endpoint protocol is different than HTTP/HTTPs, we can work out the way to add support for your mining software/hardware.
 
 - make changes to the core of the app
 - implement the protocol natively in the app
