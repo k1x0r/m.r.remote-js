@@ -232,7 +232,7 @@ function getCurrentStatus(context) {
     xhttp.open("GET", minerUrl, true)
     xhttp.send()
 }
-
+```
 After a successful response it should return a successful "MiningStatus" object with following structure
 
 | Name | Type | Description |
@@ -251,7 +251,7 @@ Videocard
 | temperature | Int | Temperature of video card. Must be provided in °C. |
 | totalHashrate | Int | Fan speed of video card. The value will be displayed in main screen of the app. |
 
-```
+
 An example of parsing the response from XMR Stack is shown below. It's put to a separate method in order to show the logic more clearly.
 
 ```javascript
