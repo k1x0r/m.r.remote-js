@@ -188,6 +188,15 @@ Choice
 Key Concept:
 Context defines client context. In it, all the variables concerning the client should be stored and operated.
 
+Method 'initContext' is meant for initialization of the new client context. In it, all client-related variables should be placed in context. The second parameter is options which provide values of additional options.
+
+```javascript
+function initContext(context, options) {
+    console.log("address " + context.address.host + " " + context.address.port)
+    minerUrl = "http://" + context.address.host + ":" + context.address.port + "/api.json"
+}
+```
+
 Context has the following parameters
 
 | Name | Type | Description | 
@@ -196,38 +205,12 @@ Context has the following parameters
 | currentStatusCallback | JavaScript function. <br/>(status: MiningStatus?, error: String?) -> () | Either status or error must be not null. If successful response is received then MiningStatus object should be provided, otherwise error description needs to be provided. |
 | onOffCallback | JavaScript function. (error: String?) -> () | Callback for turnOnOffGpu method. If an error has occurred then error description should be provided otherwise should be null. |
 
-Mining status structure
-
-| Name | Type | Description |
-| --- | --- | --- |
-| version | String | Version of mining software/hardware |
-| runningTime | Int | Running time of miner in minutes |
-| totalHashrate | Double | Total hashrate of target rig. The value will be displayed in main screen of the app. |
-| totalShares | Int | Total number of shares of your rig |
-| videocards | Array of [Videocard] | Array of videocards / mining units hashrates |
-
-Videocard
-
-| Name | Type | Description |
-| --- | --- | --- |
-| hashrate | Double | Hashrate of videocard / mining unit. The value will be displayed in main screen of the app. |
-| temperature | Int | Temperature of video card. Must be provided in °C. |
-| totalHashrate | Int | Fan speed of video card. The value will be displayed in main screen of the app. |
-
-Method 'initContext' is meant for initialization of the new client context. In it, all client-related variables should be placed in context. The second parameter is options which provide values of additional options.
-
-```javascript
-function initContext(context, options) {
-    console.log("address " + context.address.host + " " + context.address.port)
-    minerUrl = "http://" + context.address.host + ":" + context.address.port + "/api.json"
-}
 
 Method 'getCurrentStatus' is intended to make an HTTP request to get current status from the server. When the response is received it should be converted to M.R.Remote format and then the callback should be called either with successfully parsed response or with an error.
 
  context.currentStatusCallback(xmrResponse, null)   
 
-
-
+```javascript
 function getCurrentStatus(context) {
     var xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
@@ -249,6 +232,25 @@ function getCurrentStatus(context) {
     xhttp.open("GET", minerUrl, true)
     xhttp.send()
 }
+
+After a successful response it should return a successful "MiningStatus" object with following structure
+
+| Name | Type | Description |
+| --- | --- | --- |
+| version | String | Version of mining software/hardware |
+| runningTime | Int | Running time of miner in minutes |
+| totalHashrate | Double | Total hashrate of target rig. The value will be displayed in main screen of the app. |
+| totalShares | Int | Total number of shares of your rig |
+| videocards | Array of [Videocard] | Array of videocards / mining units hashrates |
+
+Videocard
+
+| Name | Type | Description |
+| --- | --- | --- |
+| hashrate | Double | Hashrate of videocard / mining unit. The value will be displayed in main screen of the app. |
+| temperature | Int | Temperature of video card. Must be provided in °C. |
+| totalHashrate | Int | Fan speed of video card. The value will be displayed in main screen of the app. |
+
 ```
 An example of parsing the response from XMR Stack is shown below. It's put to a separate method in order to show the logic more clearly.
 
