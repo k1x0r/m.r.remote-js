@@ -1,0 +1,43 @@
+{
+ "rig_name": "rig",
+ "cryptonight_type": "normalv8",
+ "miner_version": "1.6.9",
+ "driver_version": "24.20.13019.1008",
+ "mining_time": 54,
+ "total_devices": 1,
+ "total_threads": 2,
+ "hashrate_total_now": 570,
+ "hashrate_total_1min": 0,
+ "hashrate_total_5min": 0,
+ "hashrate_total_30min": 0,
+ "hashrate_total_max": 573,
+ "pool": {
+     "pool": "xmr-eu1.nanopool.org:14444",
+     "difficulty": 120001,
+     "time_connected": "2018-10-28 21:24:33",
+     "uptime": 54,
+     "latency": 0,
+     "last_job_received": 49
+ },
+ "shares": {
+     "total": 0,
+     "accepted": 0,
+     "accepted_stale": 0,
+     "rejected": 0,
+     "avg_find_time": 0
+ },
+ "devices": [
+     {
+         "device": "GPU0",
+         "device_id": 0,
+         "model": "Radeon RX 580 Series",
+         "bus_id": 1,
+         "kernel_id": 1,
+         "hashrate": 570,
+         "core_clock": 1216,
+         "memory_clock": 2000,
+         "temperature": 63,
+         "fan_speed_rpm": 2435
+     }
+ ]
+}
