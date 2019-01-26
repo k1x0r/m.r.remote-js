@@ -233,7 +233,7 @@ function getCurrentStatus(context) {
     xhttp.send()
 }
 ```
-After a successful response from your endpoint it should be returned back to M.R.Remote app through `context.currentStatusCallback`. The response must be parsed "MiningStatus" object with the following structure:
+After a successful response from your endpoint it should be returned back to M.R.Remote app through `context.currentStatusCallback`. The response must be parsed to "MiningStatus" object with the following structure:
 
 | Name | Type | Description |
 | --- | --- | --- |
